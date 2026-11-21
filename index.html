@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MusicStats — music statistics for independent artists</title>
+<meta name="description" content="MusicStats — music statistics for independent artists: YouTube, Spotify, TikTok, Instagram and DistroKid in one dashboard.">
+<link rel="icon" href="logo.png">
+<style>
+:root { --bg:#fbfaf7; --card:#fff; --text:#1f1e1c; --muted:#6b6a66; --accent:#c8402f; --line:#e6e3dc; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#141413; --card:#1e1d1b; --text:#f1efe9; --muted:#a3a19b; --accent:#e5634f; --line:#34322e; }
+}
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+.wrap { max-width:860px; margin:0 auto; padding:0 16px; }
+header { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 12px; padding:20px 0; }
+nav { display:flex; flex-wrap:wrap; gap:4px 14px; }
+.brand { display:flex; align-items:center; gap:10px; font-weight:700; font-size:20px; color:var(--text); text-decoration:none; }
+.brand img { width:36px; height:36px; }
+nav a { color:var(--muted); text-decoration:none; font-size:15px; }
+nav a:hover { color:var(--text); }
+h1 { font-size:clamp(28px,5vw,42px); line-height:1.15; margin:28px 0 12px; }
+h2 { font-size:22px; margin:32px 0 8px; }
+p, li { color:var(--text); }
+.lead { font-size:19px; color:var(--muted); max-width:640px; }
+.btn { display:inline-block; background:var(--accent); color:#fff; padding:12px 22px; border-radius:10px;
+       text-decoration:none; font-weight:600; margin:8px 12px 8px 0; }
+.btn.ghost { background:transparent; color:var(--text); border:1px solid var(--line); }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px; margin:20px 0; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; }
+.card b { display:block; margin-bottom:4px; }
+.shot { width:100%; border-radius:12px; border:1px solid var(--line); margin:24px 0; }
+.doc { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:8px 24px 24px; margin:16px 0; }
+.doc h1 { font-size:28px; }
+a { color:var(--accent); }
+code { background:var(--line); padding:1px 5px; border-radius:4px; font-size:14px; }
+footer { color:var(--muted); font-size:14px; padding:32px 0; border-top:1px solid var(--line); margin-top:40px; }
+footer a { color:var(--muted); margin-right:14px; display:inline-block; }
+code { overflow-wrap:anywhere; }
+hr { border:none; border-top:1px solid var(--line); margin:32px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a class="brand" href=""><img src="logo.png" alt="">MusicStats</a>
+  <nav><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="uk/">Українською</a></nav>
+</header>
+
+<h1>All your music statistics in one place</h1>
+<p class="lead">MusicStats brings together the numbers of independent musicians from YouTube, Spotify for Artists,
+TikTok, Instagram and DistroKid — and turns them into clear charts and plain-language insights.</p>
+<a class="btn" href="https://holvas-musicstats.streamlit.app">Open MusicStats</a><a class="btn ghost" href="https://holvas-musicstats.streamlit.app/?page=case&amp;lang=en">How it works</a>
+<img class="shot" src="screenshot.png" alt="MusicStats dashboard with demo data">
+<div class="grid">
+  <div class="card"><b>One dashboard</b>Daily views and streams, top songs and videos, audience and earnings from all
+  platforms side by side.</div>
+  <div class="card"><b>YouTube, automatically</b>Connect your channel once (read-only) and statistics update every
+  day — no files, no computer.</div>
+  <div class="card"><b>Insights, not just charts</b>A report that says what works: best releases, growth, language
+  versions of songs, promoted vs organic posts.</div>
+  <div class="card"><b>Your data stays yours</b>Each account has its own private database. Nothing is sold or shared;
+  you can delete everything at any time.</div>
+</div>
+<h2>How MusicStats uses Google data</h2>
+<p>When you click «Connect YouTube», MusicStats asks Google for <b>read-only</b> access to your own channel's
+analytics (<code>yt-analytics.readonly</code>) and video list (<code>youtube.readonly</code>). It uses them only to
+show <b>you</b> your statistics — views, watch time, likes, comments, shares and new subscribers per day and per
+video. MusicStats never posts, edits or deletes anything on YouTube. Disconnecting removes the access and the
+statistics fetched through it. Details: <a href="privacy.html">Privacy Policy</a>, <a href="terms.html">Terms of
+Service</a>, <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>,
+<a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
+<p>MusicStats is in early access: accounts are by invitation —
+<a href="mailto:holvascompany@gmail.com">write to us</a> to join.</p>
+
+<footer>
+  © 2026 Vasyl Holubovskyi · <a href="mailto:holvascompany@gmail.com">holvascompany@gmail.com</a><br>
+  <a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a>
+  <a href="https://holvas-musicstats.streamlit.app">Open MusicStats</a>
+</footer>
+</div>
+</body>
+</html>

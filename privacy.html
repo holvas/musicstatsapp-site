@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MusicStats — Privacy Policy</title>
+<meta name="description" content="MusicStats — music statistics for independent artists: YouTube, Spotify, TikTok, Instagram and DistroKid in one dashboard.">
+<link rel="icon" href="logo.png">
+<style>
+:root { --bg:#fbfaf7; --card:#fff; --text:#1f1e1c; --muted:#6b6a66; --accent:#c8402f; --line:#e6e3dc; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#141413; --card:#1e1d1b; --text:#f1efe9; --muted:#a3a19b; --accent:#e5634f; --line:#34322e; }
+}
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+.wrap { max-width:860px; margin:0 auto; padding:0 16px; }
+header { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 12px; padding:20px 0; }
+nav { display:flex; flex-wrap:wrap; gap:4px 14px; }
+.brand { display:flex; align-items:center; gap:10px; font-weight:700; font-size:20px; color:var(--text); text-decoration:none; }
+.brand img { width:36px; height:36px; }
+nav a { color:var(--muted); text-decoration:none; font-size:15px; }
+nav a:hover { color:var(--text); }
+h1 { font-size:clamp(28px,5vw,42px); line-height:1.15; margin:28px 0 12px; }
+h2 { font-size:22px; margin:32px 0 8px; }
+p, li { color:var(--text); }
+.lead { font-size:19px; color:var(--muted); max-width:640px; }
+.btn { display:inline-block; background:var(--accent); color:#fff; padding:12px 22px; border-radius:10px;
+       text-decoration:none; font-weight:600; margin:8px 12px 8px 0; }
+.btn.ghost { background:transparent; color:var(--text); border:1px solid var(--line); }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px; margin:20px 0; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; }
+.card b { display:block; margin-bottom:4px; }
+.shot { width:100%; border-radius:12px; border:1px solid var(--line); margin:24px 0; }
+.doc { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:8px 24px 24px; margin:16px 0; }
+.doc h1 { font-size:28px; }
+a { color:var(--accent); }
+code { background:var(--line); padding:1px 5px; border-radius:4px; font-size:14px; }
+footer { color:var(--muted); font-size:14px; padding:32px 0; border-top:1px solid var(--line); margin-top:40px; }
+footer a { color:var(--muted); margin-right:14px; display:inline-block; }
+code { overflow-wrap:anywhere; }
+hr { border:none; border-top:1px solid var(--line); margin:32px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a class="brand" href=""><img src="logo.png" alt="">MusicStats</a>
+  <nav><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="uk/">Українською</a></nav>
+</header>
+<div class="doc"><h1>MusicStats Privacy Policy</h1>
+<p><i>Last updated: 21.11.2026</i></p>
+<p><b>MusicStats</b> (https://musicstatsapp.com) is an analytics tool for independent musicians. It collects statistics of the user's own songs from platforms (YouTube, Spotify for Artists, TikTok, Instagram, DistroKid) into one database and shows reports. By using MusicStats you agree to this policy.</p>
+<h2>YouTube API Services</h2>
+<p>MusicStats uses <b>YouTube API Services</b>. By connecting YouTube you also agree to the <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>, and data received from Google is also subject to the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
+<h2>Data we access</h2>
+<ul><li><b>YouTube (via Google OAuth):</b> <b>read-only</b> access to the user's own channel analytics and video list (scopes <code>yt-analytics.readonly</code> and <code>youtube.readonly</code>): views, watch time, likes, comment counts, shares, new subscribers per day and per video, video titles, publish dates and durations, the channel name. MusicStats never publishes, changes or deletes anything on YouTube. Access is granted either in the desktop program on the user's computer or with the «Connect YouTube» button in the online version with an account.</li><li><b>Export files</b> (CSV/ZIP) from other platforms that the user uploads.</li><li><b>Signing in to the online version (with Google):</b> only the email and name, to recognise the user and check the invitation. We get no access to mail, files or any other Google data.</li><li><b>Suggestions to add a distributor or platform:</b> the user's email, the chosen name, a comment and — only with separate consent — a sample export file, visible only to the MusicStats administrator and used only to build the connector; deleted on request.</li><li>MusicStats uses <b>no advertising or tracking cookies</b>; only technical sign-in cookies (Streamlit / Google Sign-In).</li></ul>
+<h2>How data is used</h2>
+<p>Only to show <b>the user themself</b> their statistics: charts, tables and an insights report. Data is <b>never sold or shared with third parties</b>, never used for advertising and never combined with other users' data.</p>
+<h2>Where data is stored</h2>
+<ul><li>In local use, data and the access token (<code>token.json</code>) stay <b>only on the user's computer</b> in <code>musicstats.db</code>.</li><li>In the online version <b>without an account</b>, uploaded files and the database exist only for the browser session and in a temporary server folder.</li><li>In the online version <b>with an account</b> (by invitation), the user's database is stored as a separate file in private Supabase Storage, accessible only to that user after signing in. The file name is a hash of the email.</li><li>If the user <b>connects YouTube in the online version</b>, the Google refresh token is stored <b>encrypted</b> in a separate file in the same private storage and is used only to fetch that channel's statistics into the user's own database: automatically every day, on sign-in or with the «Update now» button.</li></ul>
+<h2>Retention and deletion of YouTube data</h2>
+<ul><li>MusicStats checks that the YouTube authorization is still valid <b>every day</b> (and at least every 30 days).</li><li>When access is <b>revoked</b> (with «Disconnect YouTube» or in the Google account) or can no longer be refreshed, MusicStats <b>immediately deletes</b> the token and all YouTube statistics obtained through the connection (in any case within 30 days).</li><li><b>«Delete my data from the server»</b> immediately deletes the user's whole database and token (in any case within 7 days of the request). The same can be requested by email. The user can download a copy first.</li></ul>
+<h2>Use of Google user data</h2>
+<p>MusicStats' use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+<h2>How to revoke access</h2>
+<p>Disconnect YouTube in the online version at any time, or revoke MusicStats' access on the Google security settings page: <a href="https://myaccount.google.com/permissions">https://myaccount.google.com/permissions</a>. In local use you can also delete <code>token.json</code> and <code>musicstats.db</code>.</p>
+<h2>Contact</h2>
+<p>holvascompany@gmail.com</p></div><div class="doc" id="uk" lang="uk"><h1>Політика конфіденційності MusicStats</h1>
+<p><i>Оновлено: 21.11.2026</i></p>
+<p><b>MusicStats</b> (https://musicstatsapp.com) — інструмент аналітики для незалежних музикантів. Він збирає статистику власних пісень користувача з платформ (YouTube, Spotify for Artists, TikTok, Instagram, DistroKid) в одну базу даних і показує звіти. Користуючись MusicStats, ви погоджуєтеся з цією політикою.</p>
+<h2>YouTube API Services</h2>
+<p>MusicStats використовує <b>YouTube API Services</b>. Підключаючи YouTube, ви також погоджуєтеся з <a href="https://www.youtube.com/t/terms">Умовами використання YouTube</a>, а дані, отримані від Google, обробляються і відповідно до <a href="https://policies.google.com/privacy">Політики конфіденційності Google</a>.</p>
+<h2>Які дані ми отримуємо</h2>
+<ul><li><b>YouTube (через Google OAuth):</b> лише доступ на <b>читання</b> статистики й списку відео каналу користувача (області доступу <code>yt-analytics.readonly</code> і <code>youtube.readonly</code>): перегляди, час перегляду, лайки, коментарі (кількість), поширення, нові підписники по днях і по відео, назви, дати й тривалість відео, назва каналу. MusicStats нічого не публікує, не змінює й не видаляє на YouTube. Доступ надається або в програмі на комп'ютері користувача, або кнопкою «Підключити YouTube» в онлайн-версії з акаунтом.</li><li><b>Файли вивантажень</b> (CSV/ZIP) з інших платформ, які користувач завантажує сам.</li><li><b>Вхід в акаунт онлайн-версії (через Google):</b> лише email і ім'я — щоб розпізнати користувача й перевірити запрошення. Доступу до пошти, файлів чи інших даних Google ми не отримуємо.</li><li><b>Пропозиція додати дистриб'ютора або платформу:</b> email користувача, вибрана назва, коментар і — лише за окремою згодою — зразок файлу експорту. Їх бачить тільки адміністратор MusicStats; зразок використовується лише для створення конектора (читача файлів) і бонусу автору пропозиції, а потім може бути видалений. На вимогу видаляємо заявку й файл повністю.</li><li>MusicStats <b>не використовує файли cookie для реклами чи стеження</b>; сайт ставить лише технічні cookie входу (Streamlit / Google Sign-In).</li></ul>
+<h2>Як використовуються дані</h2>
+<p>Лише для того, щоб показати <b>самому користувачеві</b> його статистику: графіки, таблиці, звіт-висновки. Дані <b>не продаються, не передаються третім особам</b>, не використовуються для реклами й не поєднуються з даними інших користувачів.</p>
+<h2>Де зберігаються дані</h2>
+<ul><li>Під час локального використання дані й ключ входу (<code>token.json</code>) зберігаються <b>лише на комп'ютері користувача</b> у файлі бази <code>musicstats.db</code>.</li><li>В онлайн-версії <b>без входу</b> завантажені файли й база існують лише протягом сесії браузера та в тимчасовій папці сервера; користувач сам завантажує свою базу собі.</li><li>В онлайн-версії <b>з акаунтом</b> (за запрошенням) база користувача зберігається в окремому файлі в приватному сховищі Supabase Storage; доступ до неї має лише сам користувач після входу. Назва файлу — зашифрований (хешований) email, а не сама адреса.</li><li>Якщо користувач <b>підключив YouTube в онлайн-версії</b>, ключ доступу Google (refresh token) зберігається <b>зашифрованим</b> в окремому файлі того ж приватного сховища і використовується лише для того, щоб забирати статистику його каналу в його власну базу: щодня автоматично, під час входу на сайт або кнопкою «Оновити зараз».</li></ul>
+<h2>Зберігання й видалення даних YouTube</h2>
+<ul><li>MusicStats перевіряє, що доступ до YouTube дійсний, <b>щодня</b> (і щонайменше раз на 30 днів).</li><li>Якщо доступ <b>відкликано</b> (кнопкою «Відключити YouTube» або в акаунті Google) чи його більше не можна оновити, MusicStats <b>одразу видаляє</b> ключ доступу й усю статистику YouTube, отриману через підключення (у будь-якому разі — не пізніше ніж за 30 днів).</li><li>Кнопка <b>«Видалити мої дані з сервера»</b> одразу видаляє всю базу користувача й ключ доступу (у будь-якому разі — не пізніше ніж за 7 днів після запиту). Те саме можна зробити, написавши на адресу нижче. Перед видаленням користувач може завантажити копію своєї бази.</li></ul>
+<h2>Використання даних Google</h2>
+<p>Використання й передача інформації, отриманої з Google API, відповідає <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, зокрема вимогам Limited Use.</p>
+<h2>Як відкликати доступ</h2>
+<p>Доступ до YouTube можна будь-коли відкликати кнопкою «Відключити YouTube» в онлайн-версії або на сторінці налаштувань безпеки Google: <a href="https://myaccount.google.com/permissions">https://myaccount.google.com/permissions</a>. Під час локального використання — також видалити файли <code>token.json</code> та <code>musicstats.db</code>.</p>
+<h2>Контакт</h2>
+<p>holvascompany@gmail.com</p></div>
+<footer>
+  © 2026 Vasyl Holubovskyi · <a href="mailto:holvascompany@gmail.com">holvascompany@gmail.com</a><br>
+  <a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a>
+  <a href="https://holvas-musicstats.streamlit.app">Open MusicStats</a>
+</footer>
+</div>
+</body>
+</html>
