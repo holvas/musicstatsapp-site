@@ -39,6 +39,14 @@ footer { color:var(--muted); font-size:14px; padding:32px 0; border-top:1px soli
 footer a { color:var(--muted); margin-right:14px; display:inline-block; }
 code { overflow-wrap:anywhere; }
 hr { border:none; border-top:1px solid var(--line); margin:32px 0; }
+.promo { border:2px solid var(--accent); border-radius:14px; padding:18px 20px; margin:20px 0;
+         background:var(--card); }
+.promo b.big { font-size:22px; display:block; margin-bottom:6px; }
+.promo s { color:var(--muted); }
+.timer { display:flex; flex-wrap:wrap; gap:10px; margin:12px 0 4px; }
+.timer div { background:var(--line); border-radius:10px; padding:8px 12px; min-width:64px; text-align:center; }
+.timer span { display:block; font-size:26px; font-weight:800; color:var(--accent); line-height:1.1; }
+.timer small { color:var(--muted); font-size:12px; }
 </style>
 </head>
 <body>
@@ -64,9 +72,23 @@ TikTok, Instagram and DistroKid — and turns them into clear charts and plain-l
   you can delete everything at any time.</div>
 </div>
 <h2>Pricing</h2>
+<div class="promo" id="promo"><b class="big">🎉 Launch price until 31 December 2026</b>Pro yearly — <b>$24</b> instead of <s>$36</s>: just $2 a month, save $24 vs paying monthly. The price applies to the first year, then $36/year. Offer ends in:<div class="timer"><div><span>--</span><small>days</small></div><div><span>--</span><small>hours</small></div><div><span>--</span><small>minutes</small></div><div><span>--</span><small>seconds</small></div></div><a class="btn" href="https://holvas-musicstats.streamlit.app/?src=account&amp;tab=import&amp;lang=en">Get the launch price</a></div>
+<script>
+(function () {
+  var end = new Date("2026-12-31T22:59:59Z"), box = document.getElementById("promo");
+  function tick() {
+    var ms = end - new Date();
+    if (ms <= 0) { box.remove(); return; }
+    var s = Math.floor(ms / 1000), v = [Math.floor(s / 86400), Math.floor(s % 86400 / 3600),
+                                        Math.floor(s % 3600 / 60), s % 60];
+    box.querySelectorAll(".timer span").forEach(function (el, i) { el.textContent = String(v[i]).padStart(2, "0"); });
+  }
+  tick(); setInterval(tick, 1000);
+})();
+</script>
 <div class="grid">
-  <div class="card"><b>Free — $0</b>Account, file import for all platforms and templates, dashboard, top songs and
-  videos, earnings, audience, report findings on the page.</div>
+  <div class="card"><b>Free — $0</b>Account, file import for all platforms and templates, YouTube in one click (a year
+  of statistics, no files), dashboard, top songs and videos, earnings, audience, report findings on the page.</div>
   <div class="card"><b>Pro — $4/month or $36/year</b>Everything in Free plus daily automatic YouTube updates (no files)
   and the full insights report download. Card payment via Stripe; cancel any time; full refund within 14 days of the
   first payment. Details: <a href="terms.html">Terms of Service</a>.</div>
