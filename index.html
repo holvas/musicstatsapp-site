@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="uk" data-lang="uk">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MusicStats — music statistics for independent artists</title>
-<meta name="description" content="MusicStats — music statistics for independent artists: YouTube, Spotify, TikTok, Instagram and DistroKid in one dashboard.">
+<title>MusicStats — статистика музики для незалежних артистів</title>
+<meta name="description" content="MusicStats — статистика музики для незалежних артистів: YouTube, Spotify, TikTok, Instagram і DistroKid в одному дашборді. Music statistics for independent artists in one dashboard.">
 <link rel="icon" href="logo.png">
 <style>
 :root { --bg:#fbfaf7; --card:#fff; --text:#1f1e1c; --muted:#6b6a66; --accent:#c8402f; --line:#e6e3dc; }
@@ -39,6 +39,11 @@ footer { color:var(--muted); font-size:14px; padding:32px 0; border-top:1px soli
 footer a { color:var(--muted); margin-right:14px; display:inline-block; }
 code { overflow-wrap:anywhere; }
 hr { border:none; border-top:1px solid var(--line); margin:32px 0; }
+html[data-lang="uk"] .l-en, html[data-lang="en"] .l-uk { display:none !important; }
+.langs { display:inline-flex; border:1px solid var(--line); border-radius:8px; overflow:hidden; margin-left:6px; }
+.langs button { background:transparent; color:var(--muted); border:0; padding:5px 10px; font:inherit; font-size:14px;
+                cursor:pointer; }
+.langs button.on { background:var(--accent); color:#fff; }
 .promo { border:2px solid var(--accent); border-radius:14px; padding:18px 20px; margin:20px 0;
          background:var(--card); }
 .promo b.big { font-size:22px; display:block; margin-bottom:6px; }
@@ -48,44 +53,86 @@ hr { border:none; border-top:1px solid var(--line); margin:32px 0; }
 .timer span { display:block; font-size:26px; font-weight:800; color:var(--accent); line-height:1.1; }
 .timer small { color:var(--muted); font-size:12px; }
 </style>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search).get("lang"), h = location.hash.slice(1), saved = null;
+  try { saved = localStorage.getItem("ms_lang"); } catch (e) {}
+  var l = (q === "en" || q === "uk") ? q : (h === "en" || h === "uk") ? h : (saved === "en" ? "en" : "uk");
+  document.documentElement.setAttribute("data-lang", l);
+  document.documentElement.lang = l;
+  window.setLang = function (x) {
+    document.documentElement.setAttribute("data-lang", x);
+    document.documentElement.lang = x;
+    try { localStorage.setItem("ms_lang", x); } catch (e) {}
+    document.querySelectorAll(".langs button").forEach(function (b) { b.classList.toggle("on", b.dataset.l === x); });
+    var u = new URL(location.href); u.searchParams.set("lang", x); u.hash = ""; history.replaceState(null, "", u);
+  };
+  document.addEventListener("DOMContentLoaded", function () { window.setLang(l); });
+})();
+</script>
 </head>
 <body>
 <div class="wrap">
 <header>
-  <a class="brand" href=""><img src="logo.png" alt="">MusicStats</a>
-  <nav><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="uk/">Українською</a></nav>
+  <a class="brand" href="./"><img src="logo.png" alt="">MusicStats</a>
+  <nav><a href="privacy.html"><span class="l-uk">Конфіденційність</span><span class="l-en" lang="en">Privacy</span></a><a href="terms.html"><span class="l-uk">Умови</span><span class="l-en" lang="en">Terms</span></a><span class="langs"><button data-l="uk" onclick="setLang('uk')">UA</button><button data-l="en" onclick="setLang('en')">EN</button></span></nav>
 </header>
+<div class="l-uk">
+<h1>Уся статистика вашої музики в одному місці</h1>
+<p class="lead">MusicStats збирає цифри незалежних музикантів з YouTube, Spotify for Artists, TikTok, Instagram
+і DistroKid — і перетворює їх на зрозумілі графіки та висновки простою мовою.</p>
+<a class="btn" href="https://holvas-musicstats.streamlit.app">Відкрити MusicStats</a><a class="btn ghost" href="https://holvas-musicstats.streamlit.app/?page=case">Як це працює</a>
+<img class="shot" src="screenshot-uk.png" alt="Дашборд MusicStats з демо-даними">
+<div class="grid">
+  <div class="card"><b>Один дашборд</b>Перегляди й прослуховування по днях, топ пісень і відео, аудиторія й заробіток
+  з усіх платформ поруч.</div>
+  <div class="card"><b>YouTube в один клік</b>Підключіть канал (лише перегляд) — і за хвилину побачите статистику
+  за рік, безкоштовно й без файлів. У Pro вона оновлюється сама щодня.</div>
+  <div class="card"><b>Висновки, а не лише графіки</b>Звіт підказує, що працює: найкращі релізи, ріст, мовні версії
+  пісень, реклама проти органіки.</div>
+  <div class="card"><b>Ваші дані — ваші</b>Кожен акаунт має власну приватну базу. Нічого не продається й не
+  передається; видалити все можна будь-коли.</div>
+</div>
+<h2>Тарифи</h2>
+<div class="promo" id="promo-uk"><b class="big">🎉 Стартова ціна до 31 грудня 2026</b>Річна підписка Pro — <b>$24</b> замість <s>$36</s>: лише $2 на місяць, економія $24 порівняно з місячною оплатою. Ціна діє на перший рік, далі — $36/рік. До кінця акції:<div class="timer"><div><span>--</span><small>днів</small></div><div><span>--</span><small>годин</small></div><div><span>--</span><small>хвилин</small></div><div><span>--</span><small>секунд</small></div></div><a class="btn" href="https://holvas-musicstats.streamlit.app/?src=account&amp;tab=import">Отримати стартову ціну</a></div>
 
+<div class="grid">
+  <div class="card"><b>Free — $0</b>Акаунт, імпорт файлів усіх платформ і шаблонів, YouTube в один клік (статистика
+  за рік без файлів), дашборд, топ пісень і відео, заробіток, аудиторія, висновки звіту на сторінці.</div>
+  <div class="card"><b>Pro — $4/міс або $36/рік</b>Усе з Free, плюс щоденне автоматичне оновлення YouTube (без
+  файлів) і завантаження повного звіту-висновків. Оплата карткою через Stripe; скасувати можна будь-коли; повне
+  повернення протягом 14 днів після першої оплати. Докладно: <a href="terms.html">Умови використання</a>.</div>
+</div>
+<h2>Як MusicStats використовує дані Google</h2>
+<p>Кнопка «Підключити YouTube» просить у Google доступ <b>лише на перегляд</b> аналітики вашого каналу
+(<code>yt-analytics.readonly</code>) і списку відео (<code>youtube.readonly</code>). Вони потрібні лише для того,
+щоб показати <b>вам</b> вашу статистику: перегляди, час перегляду, лайки, коментарі, поширення й нових підписників
+по днях і по відео. MusicStats нічого не публікує, не змінює й не видаляє на YouTube. Відключення прибирає доступ
+і статистику, отриману через нього. Докладно: <a href="privacy.html">Політика конфіденційності</a>,
+<a href="terms.html">Умови використання</a>, <a href="https://www.youtube.com/t/terms">Умови YouTube</a>,
+<a href="https://policies.google.com/privacy">Політика конфіденційності Google</a>.</p>
+<p>MusicStats у ранньому доступі: акаунти — за запрошенням.
+<a href="mailto:holvascompany@gmail.com">Напишіть нам</a>, щоб приєднатися.</p>
+</div>
+<div class="l-en" lang="en">
 <h1>All your music statistics in one place</h1>
 <p class="lead">MusicStats brings together the numbers of independent musicians from YouTube, Spotify for Artists,
 TikTok, Instagram and DistroKid — and turns them into clear charts and plain-language insights.</p>
-<a class="btn" href="https://holvas-musicstats.streamlit.app">Open MusicStats</a><a class="btn ghost" href="https://holvas-musicstats.streamlit.app/?page=case&amp;lang=en">How it works</a>
+<a class="btn" href="https://holvas-musicstats.streamlit.app/?lang=en">Open MusicStats</a><a class="btn ghost" href="https://holvas-musicstats.streamlit.app/?page=case&amp;lang=en">How it works</a>
 <img class="shot" src="screenshot.png" alt="MusicStats dashboard with demo data">
 <div class="grid">
   <div class="card"><b>One dashboard</b>Daily views and streams, top songs and videos, audience and earnings from all
   platforms side by side.</div>
-  <div class="card"><b>YouTube, automatically</b>Connect your channel once (read-only) and statistics update every
-  day — no files, no computer.</div>
+  <div class="card"><b>YouTube in one click</b>Connect your channel (read-only) and see a year of statistics in a
+  minute — free, no files. In Pro it updates itself every day.</div>
   <div class="card"><b>Insights, not just charts</b>A report that says what works: best releases, growth, language
   versions of songs, promoted vs organic posts.</div>
   <div class="card"><b>Your data stays yours</b>Each account has its own private database. Nothing is sold or shared;
   you can delete everything at any time.</div>
 </div>
 <h2>Pricing</h2>
-<div class="promo" id="promo"><b class="big">🎉 Launch price until 31 December 2026</b>Pro yearly — <b>$24</b> instead of <s>$36</s>: just $2 a month, save $24 vs paying monthly. The price applies to the first year, then $36/year. Offer ends in:<div class="timer"><div><span>--</span><small>days</small></div><div><span>--</span><small>hours</small></div><div><span>--</span><small>minutes</small></div><div><span>--</span><small>seconds</small></div></div><a class="btn" href="https://holvas-musicstats.streamlit.app/?src=account&amp;tab=import&amp;lang=en">Get the launch price</a></div>
-<script>
-(function () {
-  var end = new Date("2026-12-31T22:59:59Z"), box = document.getElementById("promo");
-  function tick() {
-    var ms = end - new Date();
-    if (ms <= 0) { box.remove(); return; }
-    var s = Math.floor(ms / 1000), v = [Math.floor(s / 86400), Math.floor(s % 86400 / 3600),
-                                        Math.floor(s % 3600 / 60), s % 60];
-    box.querySelectorAll(".timer span").forEach(function (el, i) { el.textContent = String(v[i]).padStart(2, "0"); });
-  }
-  tick(); setInterval(tick, 1000);
-})();
-</script>
+<div class="promo" id="promo-en"><b class="big">🎉 Launch price until 31 December 2026</b>Pro yearly — <b>$24</b> instead of <s>$36</s>: just $2 a month, save $24 vs paying monthly. The price applies to the first year, then $36/year. Offer ends in:<div class="timer"><div><span>--</span><small>days</small></div><div><span>--</span><small>hours</small></div><div><span>--</span><small>minutes</small></div><div><span>--</span><small>seconds</small></div></div><a class="btn" href="https://holvas-musicstats.streamlit.app/?src=account&amp;tab=import&amp;lang=en">Get the launch price</a></div>
+
 <div class="grid">
   <div class="card"><b>Free — $0</b>Account, file import for all platforms and templates, YouTube in one click (a year
   of statistics, no files), dashboard, top songs and videos, earnings, audience, report findings on the page.</div>
@@ -103,11 +150,24 @@ Service</a>, <a href="https://www.youtube.com/t/terms">YouTube Terms of Service<
 <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
 <p>MusicStats is in early access: accounts are by invitation —
 <a href="mailto:holvascompany@gmail.com">write to us</a> to join.</p>
-
+<script>
+(function () {
+  var end = new Date("2026-12-31T22:59:59Z"), boxes = document.querySelectorAll(".promo");
+  function tick() {
+    var ms = end - new Date();
+    if (ms <= 0) { boxes.forEach(function (b) { b.remove(); }); return; }
+    var s = Math.floor(ms / 1000), v = [Math.floor(s / 86400), Math.floor(s % 86400 / 3600),
+                                        Math.floor(s % 3600 / 60), s % 60];
+    document.querySelectorAll(".promo .timer span").forEach(function (el, i) { el.textContent = String(v[i % 4]).padStart(2, "0"); });
+  }
+  tick(); setInterval(tick, 1000);
+})();
+</script></div>
 <footer>
   © 2026 Vasyl Holubovskyi · <a href="mailto:holvascompany@gmail.com">holvascompany@gmail.com</a><br>
-  <a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a>
-  <a href="https://holvas-musicstats.streamlit.app">Open MusicStats</a>
+  <a href="privacy.html"><span class="l-uk">Політика конфіденційності</span><span class="l-en" lang="en">Privacy Policy</span></a>
+  <a href="terms.html"><span class="l-uk">Умови використання</span><span class="l-en" lang="en">Terms of Service</span></a>
+  <a href="https://holvas-musicstats.streamlit.app" class="l-uk">Відкрити MusicStats</a><a href="https://holvas-musicstats.streamlit.app/?lang=en" class="l-en">Open MusicStats</a>
 </footer>
 </div>
 </body>

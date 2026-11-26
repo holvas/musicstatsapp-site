@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="uk" data-lang="uk">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MusicStats — Terms of Service</title>
-<meta name="description" content="MusicStats — music statistics for independent artists: YouTube, Spotify, TikTok, Instagram and DistroKid in one dashboard.">
+<title>MusicStats — Умови використання / Terms of Service</title>
+<meta name="description" content="MusicStats — статистика музики для незалежних артистів: YouTube, Spotify, TikTok, Instagram і DistroKid в одному дашборді. Music statistics for independent artists in one dashboard.">
 <link rel="icon" href="logo.png">
 <style>
 :root { --bg:#fbfaf7; --card:#fff; --text:#1f1e1c; --muted:#6b6a66; --accent:#c8402f; --line:#e6e3dc; }
@@ -39,6 +39,11 @@ footer { color:var(--muted); font-size:14px; padding:32px 0; border-top:1px soli
 footer a { color:var(--muted); margin-right:14px; display:inline-block; }
 code { overflow-wrap:anywhere; }
 hr { border:none; border-top:1px solid var(--line); margin:32px 0; }
+html[data-lang="uk"] .l-en, html[data-lang="en"] .l-uk { display:none !important; }
+.langs { display:inline-flex; border:1px solid var(--line); border-radius:8px; overflow:hidden; margin-left:6px; }
+.langs button { background:transparent; color:var(--muted); border:0; padding:5px 10px; font:inherit; font-size:14px;
+                cursor:pointer; }
+.langs button.on { background:var(--accent); color:#fff; }
 .promo { border:2px solid var(--accent); border-radius:14px; padding:18px 20px; margin:20px 0;
          background:var(--card); }
 .promo b.big { font-size:22px; display:block; margin-bottom:6px; }
@@ -48,24 +53,43 @@ hr { border:none; border-top:1px solid var(--line); margin:32px 0; }
 .timer span { display:block; font-size:26px; font-weight:800; color:var(--accent); line-height:1.1; }
 .timer small { color:var(--muted); font-size:12px; }
 </style>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search).get("lang"), h = location.hash.slice(1), saved = null;
+  try { saved = localStorage.getItem("ms_lang"); } catch (e) {}
+  var l = (q === "en" || q === "uk") ? q : (h === "en" || h === "uk") ? h : (saved === "en" ? "en" : "uk");
+  document.documentElement.setAttribute("data-lang", l);
+  document.documentElement.lang = l;
+  window.setLang = function (x) {
+    document.documentElement.setAttribute("data-lang", x);
+    document.documentElement.lang = x;
+    try { localStorage.setItem("ms_lang", x); } catch (e) {}
+    document.querySelectorAll(".langs button").forEach(function (b) { b.classList.toggle("on", b.dataset.l === x); });
+    var u = new URL(location.href); u.searchParams.set("lang", x); u.hash = ""; history.replaceState(null, "", u);
+  };
+  document.addEventListener("DOMContentLoaded", function () { window.setLang(l); });
+})();
+</script>
 </head>
 <body>
 <div class="wrap">
 <header>
-  <a class="brand" href=""><img src="logo.png" alt="">MusicStats</a>
-  <nav><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="uk/">Українською</a></nav>
+  <a class="brand" href="./"><img src="logo.png" alt="">MusicStats</a>
+  <nav><a href="privacy.html"><span class="l-uk">Конфіденційність</span><span class="l-en" lang="en">Privacy</span></a><a href="terms.html"><span class="l-uk">Умови</span><span class="l-en" lang="en">Terms</span></a><span class="langs"><button data-l="uk" onclick="setLang('uk')">UA</button><button data-l="en" onclick="setLang('en')">EN</button></span></nav>
 </header>
-<div class="doc"><h1>MusicStats Terms of Service</h1>
-<p><i>Last updated: 26.11.2026</i></p>
-<ol><li>MusicStats (https://musicstatsapp.com) is provided "as is" for viewing your own music statistics; the author does not guarantee uninterrupted operation or complete accuracy of platform data.</li><li>MusicStats uses YouTube API Services. <b>By using the YouTube features of MusicStats you agree to be bound by the <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a></b> and the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</li><li>You upload and connect only data and channels you have rights to.</li><li>Data handling is described in the <a href="https://musicstatsapp.com/privacy.html">MusicStats Privacy Policy</a>.</li><li><b>Plans.</b> Free costs nothing: account, file import, a one-time YouTube connection (a year of statistics), dashboard, report findings on the page. <b>Pro</b> adds daily automatic YouTube updates and the insights report download: <b>$4 per month</b> or <b>$36 per year</b> (taxes, where applicable, are shown on the checkout page). Payment by card via Stripe; the subscription renews automatically for the same period until cancelled. Promotional prices (such as the launch price of the yearly plan) apply only within the stated time and only to the stated billing period; they are shown on the checkout page, and later periods are charged at the regular price.</li><li><b>Cancellation.</b> You can cancel any time: «💎 Plan» → «Manage subscription». Pro stays on until the end of the period already paid, then the account moves to Free; your data stays.</li><li><b>Refunds.</b> Within 14 days of the first subscription payment we refund the full amount on request at holvascompany@gmail.com. After that, partially used periods are not refunded, except where required by law.</li><li>The MusicStats software is © 2026 Vasyl Holubovskyi, all rights reserved; copying the code without permission is prohibited.</li><li>These terms may be updated; the current version is on this page. Price changes are announced in advance by email and apply from the next billing period.</li></ol>
-<p>Contact: holvascompany@gmail.com</p></div><div class="doc" id="uk" lang="uk"><h1>Умови використання MusicStats</h1>
+<div class="l-uk"><div class="doc"><h1>Умови використання MusicStats</h1>
 <p><i>Оновлено: 26.11.2026</i></p>
 <ol><li>MusicStats (https://musicstatsapp.com) надається «як є» для перегляду власної статистики пісень; автор не гарантує безперервної роботи чи повної точності даних платформ.</li><li>MusicStats використовує YouTube API Services. <b>Користуючись функціями YouTube у MusicStats, ви погоджуєтеся з <a href="https://www.youtube.com/t/terms">Умовами використання YouTube</a></b> і з <a href="https://policies.google.com/privacy">Політикою конфіденційності Google</a>.</li><li>Користувач завантажує й підключає лише дані та канали, на які має права, і відповідає за їх зберігання.</li><li>Обробку даних описано в <a href="https://musicstatsapp.com/privacy.html">Політиці конфіденційності MusicStats</a>.</li><li><b>Тарифи.</b> Free — безкоштовно: акаунт, імпорт файлів, разове підключення YouTube (статистика за рік), дашборд, висновки звіту на сторінці. <b>Pro</b> — щоденне автоматичне оновлення YouTube і завантаження звіту-висновків: <b>$4 на місяць</b> або <b>$36 на рік</b> (податки, якщо застосовні, показуються на сторінці оплати). Оплата карткою через Stripe; підписка продовжується автоматично на той самий період, доки її не скасовано. Акційні ціни (наприклад, стартова ціна річної підписки) діють лише в зазначений строк і лише для зазначеного періоду оплати; їх показано на сторінці оплати, а наступні періоди оплачуються за звичайною ціною.</li><li><b>Скасування.</b> Підписку можна скасувати будь-коли: «💎 Тариф» → «Керувати підпискою». Pro діє до кінця вже оплаченого періоду, далі акаунт переходить на Free; дані лишаються.</li><li><b>Повернення коштів.</b> Протягом 14 днів після першої оплати підписки повертаємо повну суму на запит на holvascompany@gmail.com. Після цього за частково використаний період кошти не повертаються, крім випадків, передбачених законом.</li><li>Програмне забезпечення MusicStats захищене авторським правом (© 2026 Vasyl Holubovskyi, усі права захищені); копіювання коду без дозволу заборонене.</li><li>Умови можуть оновлюватися; актуальна версія — на цій сторінці. Про зміну цін повідомляємо заздалегідь електронною поштою; нова ціна діє з наступного періоду оплати.</li></ol>
-<p>Контакт: holvascompany@gmail.com</p></div>
+<p>Контакт: holvascompany@gmail.com</p></div></div>
+<div class="l-en" lang="en"><div class="doc"><h1>MusicStats Terms of Service</h1>
+<p><i>Last updated: 26.11.2026</i></p>
+<ol><li>MusicStats (https://musicstatsapp.com) is provided "as is" for viewing your own music statistics; the author does not guarantee uninterrupted operation or complete accuracy of platform data.</li><li>MusicStats uses YouTube API Services. <b>By using the YouTube features of MusicStats you agree to be bound by the <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a></b> and the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</li><li>You upload and connect only data and channels you have rights to.</li><li>Data handling is described in the <a href="https://musicstatsapp.com/privacy.html">MusicStats Privacy Policy</a>.</li><li><b>Plans.</b> Free costs nothing: account, file import, a one-time YouTube connection (a year of statistics), dashboard, report findings on the page. <b>Pro</b> adds daily automatic YouTube updates and the insights report download: <b>$4 per month</b> or <b>$36 per year</b> (taxes, where applicable, are shown on the checkout page). Payment by card via Stripe; the subscription renews automatically for the same period until cancelled. Promotional prices (such as the launch price of the yearly plan) apply only within the stated time and only to the stated billing period; they are shown on the checkout page, and later periods are charged at the regular price.</li><li><b>Cancellation.</b> You can cancel any time: «💎 Plan» → «Manage subscription». Pro stays on until the end of the period already paid, then the account moves to Free; your data stays.</li><li><b>Refunds.</b> Within 14 days of the first subscription payment we refund the full amount on request at holvascompany@gmail.com. After that, partially used periods are not refunded, except where required by law.</li><li>The MusicStats software is © 2026 Vasyl Holubovskyi, all rights reserved; copying the code without permission is prohibited.</li><li>These terms may be updated; the current version is on this page. Price changes are announced in advance by email and apply from the next billing period.</li></ol>
+<p>Contact: holvascompany@gmail.com</p></div></div>
 <footer>
   © 2026 Vasyl Holubovskyi · <a href="mailto:holvascompany@gmail.com">holvascompany@gmail.com</a><br>
-  <a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a>
-  <a href="https://holvas-musicstats.streamlit.app">Open MusicStats</a>
+  <a href="privacy.html"><span class="l-uk">Політика конфіденційності</span><span class="l-en" lang="en">Privacy Policy</span></a>
+  <a href="terms.html"><span class="l-uk">Умови використання</span><span class="l-en" lang="en">Terms of Service</span></a>
+  <a href="https://holvas-musicstats.streamlit.app" class="l-uk">Відкрити MusicStats</a><a href="https://holvas-musicstats.streamlit.app/?lang=en" class="l-en">Open MusicStats</a>
 </footer>
 </div>
 </body>
